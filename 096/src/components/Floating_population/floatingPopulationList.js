@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from "axios";
+import { padStart } from 'lodash';
 
 class floatingPopulationList extends Component {
     constructor(props) {
@@ -16,7 +17,7 @@ class floatingPopulationList extends Component {
     }
 
     callFloatPopulListApi = async () => {
-            axios.get('http://openapi.seoul.go.kr:8088/746b4762786170703430676e6e4678/json/IotVdata018/1/5/', {
+            axios.get('https://api.rss2json.com/v1/api.json?rss_url=https://www.chosun.com/arc/outboundfeeds/rss/category/sports/?outputType=xml', {
             })
             .then( response => {
                 try {
@@ -37,19 +38,18 @@ class floatingPopulationList extends Component {
         //jsonString = jsonString.replace(/\(10세단위\)/g, '')
         var json = JSON.parse(jsonString)
 
-        for(let i=0; i<json.IotVdata018.row.length; i++){
-            var data = json.IotVdata018.row[i]
+        for(let i=0; i<json.items.length; i++){
+            var data = json.items[i]
             var idx = i+1
             result.push(
                 <tr class="hidden_type">
                     <td>{idx}</td>
-                    <td>{data.REGIST_DT}</td>
-                    <td>{data.ORGAN_NM}</td>
-                    <td>{data.TRNSMIT_SERVER_NO}</td>
-                    <td>{data.DATA_NO}</td>
-                    <td>{data.COLUMN0}</td>
-                    <td>{data.COLUMN1}</td>
-                    <td>{data.COLUMN6}</td>
+                    <td>{data.title}</td>
+                   
+                    <td>{data.pubDate}</td>
+                    <td>{data.author}</td>
+                    <td>{data.description}</td>
+                   
                 </tr>
             )
         }
@@ -67,13 +67,11 @@ class floatingPopulationList extends Component {
                         <table class="table_ty1 fp_tlist">
                             <tr>
                                 <th>Row</th>
-                                <th>일자</th>
-                                <th>시간</th>
-                                <th>연령대</th>
-                                <th>성별</th>
-                                <th>시</th>
-                                <th>군구</th>
-                                <th>유동인구수</th>
+                                <th>title</th>
+                                <th>pubDate</th>
+                                <th>author</th>                          
+                                <th>description</th>
+                                
                             </tr>
                         </table>	
                         <table class="table_ty2 fp_tlist">

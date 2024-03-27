@@ -15,7 +15,7 @@ import LoginForm from './LoginForm';
 
 import reactThrottle from './R095_reactThrottle';
 import floatingPopulationList from './Floating_population/floatingPopulationList';
-
+import boardList from './Board/boardList';
 class App extends Component {
   render () {
     return (
@@ -24,6 +24,7 @@ class App extends Component {
         <Route exact path='/' component={LoginForm} />
         <Route exact path='/Throttle' component={reactThrottle} />
         <Route path='/floatPopulationList' component={floatingPopulationList} />
+        <Route path='/boardList' component={boardList}/>
         <Footer/>
       </div>
     );

@@ -16,6 +16,7 @@ import Footer from './Footer/Footer';
 import LoginForm from './LoginForm';
 
 import SoftwareList from './SoftwareToolsManage/SoftwareList';
+
 import SoftwareView from './SoftwareToolsManage/SoftwareView';
 
 import Register from './Register/Register';
@@ -78,6 +79,7 @@ class App extends Component {
         <Route exact path='/' component={LoginForm} />
         <Route path='/login' component={LoginForm} />
         <Route path='/SoftwareList' component={SoftwareList} />
+      
         <Route path='/SoftwareView/:swtcode' component={SoftwareView} />
         <Route path='/register' component={Register} />
         <Route path='/PwChangeForm/:email/:token' component={PwChangeForm} />
